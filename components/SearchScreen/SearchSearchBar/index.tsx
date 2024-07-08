@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Text, View, StyleSheet, TextInput, TouchableOpacity } from 'react-native';
+import { Text, View, StyleSheet, TextInput, TouchableOpacity, Platform } from 'react-native';
 /* import { XMarkIcon } from "react-native-heroicons/outline";
  */import { Ionicons } from '@expo/vector-icons';
 import { useRef } from 'react';
@@ -9,7 +9,7 @@ interface SearchBarProps {
     handleTextDebounce: (str: string) => void
 }
 
-const SearchBar = ({ handleTextDebounce,  }: SearchBarProps) => {
+const SearchBar = ({ handleTextDebounce, }: SearchBarProps) => {
     const textInputRef = useRef<TextInput>(null);
 
     const clearTextInput = () => {
@@ -21,8 +21,9 @@ const SearchBar = ({ handleTextDebounce,  }: SearchBarProps) => {
             onChangeText={(text) => handleTextDebounce(text)}
             placeholder={SEARCH_PLACEHOLDER}
             placeholderTextColor="gray"
-            style={styles.textInput}
+            style={[styles.textInput, Platform.OS === "web" && { outline: 'none' }]}
             ref={textInputRef}
+
         />
         <TouchableOpacity onPress={clearTextInput}>
             <Ionicons name="close-outline" size={25} color="gray" />
@@ -40,11 +41,13 @@ const styles = StyleSheet.create({
         marginBottom: 12,
         marginTop: 48,
         flexDirection: 'row',
-        padding: 8,
+        padding: 12,
         justifyContent: 'space-between',
         alignItems: 'center',
         backgroundColor: 'white',
         borderRadius: 8,
+        width: Platform.OS == 'web' ? '90%' : 'auto'
+
     },
     textInput: {
         paddingBottom: 4,
@@ -53,6 +56,9 @@ const styles = StyleSheet.create({
         fontWeight: '500',
         color: 'black',
         letterSpacing: 0.5,
+        justifyContent: 'center',
+        lineHeight: 22,
+
     },
 
 

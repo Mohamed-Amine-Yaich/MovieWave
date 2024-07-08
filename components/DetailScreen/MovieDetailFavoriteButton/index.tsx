@@ -21,8 +21,7 @@ const MovieDetailFavoriteButton = (props: MovieDetailFavoriteButtonProps) => {
 export default MovieDetailFavoriteButton;
 
 const styles = StyleSheet.create({
-    container:
-    {
+    container:{
         backgroundColor: '#2496ff',
         padding: 10,
         borderRadius: 9999,
