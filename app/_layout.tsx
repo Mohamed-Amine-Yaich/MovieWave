@@ -10,6 +10,7 @@ import { useColorScheme } from '@/hooks/useColorScheme';
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
 
+
 export default function RootLayout() {
   const colorScheme = useColorScheme();
   const [loaded] = useFonts({
@@ -28,10 +29,17 @@ export default function RootLayout() {
 
   return (
     <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <Stack>
-        <Stack.Screen name="search" options={{ headerShown: false }} />
+      <Stack
+        screenOptions={{ headerShown: false }}
+      >
+        <Stack.Screen name="index" />
+        <Stack.Screen name="detail" />
         <Stack.Screen name="+not-found" />
       </Stack>
     </ThemeProvider>
   );
 }
+export const unstable_settings = {
+  // Ensure any route can link back to `/`
+  initialRouteName: 'search',
+};

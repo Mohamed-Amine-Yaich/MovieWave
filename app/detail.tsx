@@ -1,19 +1,21 @@
 import { fetchMovies } from '@/services/moviesService';
+import { useLocalSearchParams } from 'expo-router';
 import * as React from 'react';
 import { Text, View, StyleSheet } from 'react-native';
 
-interface SearchScreenProps { }
+interface DetailScreenProps { }
 
-const SearchScreen = (props: SearchScreenProps) => {
-
+const DetailScreen = (props: DetailScreenProps) => {
+  const params = useLocalSearchParams();
+  console.log(params)
   return (
     <View style={styles.container}>
-      <Text>SearchScreen</Text>
+      <Text>DetailScreen {params?.movieId} </Text>
     </View>
   );
 };
 
-export default SearchScreen;
+export default DetailScreen;
 
 const styles = StyleSheet.create({
   container: {
