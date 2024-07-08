@@ -3,15 +3,15 @@ import * as React from 'react';
 import {  StyleSheet, Image } from 'react-native';
 
 
-const HomeImageBg = () => {
+const SearchImageBg = () => {
     return (<Image
-        source={require("../../../assets/images/homeScreenBg.png")}
+        source={require("../../../assets/images/searchScreenBg.png")}
         style={styles.backgroundImage}
     />
     );
 };
 
-export default HomeImageBg;
+export default SearchImageBg;
 
 const styles = StyleSheet.create({
     backgroundImage: {

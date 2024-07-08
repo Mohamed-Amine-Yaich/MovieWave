@@ -2,11 +2,11 @@ import * as React from 'react';
 import { Text, View, StyleSheet, FlatList } from 'react-native';
 import Loading from '../Loading';
 import MovieCard from '../MovieCard';
-import HomeFooter from '../HomeFooter';
 import NoResultsOrError from '../NoResultsOrError';
 import { IMovie } from '@/interfaces/interfaces';
+import SearchFooter from '../SearchFooter';
 
-interface HomeContentProps {
+interface SearchContentProps {
     loading: boolean
     results: IMovie[]
     searchText: string
@@ -16,20 +16,20 @@ interface HomeContentProps {
     loadMoreMovies: () => void
 }
 
-const HomeContent = ({ searchText, currentPage, loading, results, apiError, error, loadMoreMovies }: HomeContentProps) => {
+const SearchContent = ({ searchText, currentPage, loading, results, apiError, error, loadMoreMovies }: SearchContentProps) => {
     return (
         loading ? (
             <Loading />
         ) : results.length > 0 ? (
             <FlatList
-               showsVerticalScrollIndicator={false}
+                showsVerticalScrollIndicator={false}
                 data={results}
                 renderItem={({ item }: { item: IMovie }) => <MovieCard item={item} />}
                 keyExtractor={item => item.imdbID}
                 numColumns={2}
                 onEndReached={loadMoreMovies}
                 onEndReachedThreshold={0.5}
-                ListFooterComponent={<HomeFooter searchText={searchText} currentPage={currentPage} apiError={apiError} />}
+                ListFooterComponent={<SearchFooter searchText={searchText} currentPage={currentPage} apiError={apiError} />}
             />
         ) : (
             <NoResultsOrError error={error} />
@@ -38,7 +38,7 @@ const HomeContent = ({ searchText, currentPage, loading, results, apiError, erro
     )
 };
 
-export default HomeContent;
+export default SearchContent;
 
 const styles = StyleSheet.create({
     container: {}

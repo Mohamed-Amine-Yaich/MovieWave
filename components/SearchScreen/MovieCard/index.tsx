@@ -10,11 +10,11 @@ interface IMovieCard {
 
 const MovieCard = ({ item }: IMovieCard) => {
     return (
-        <Link href={{ pathname: 'detail', params: { movieId: item.imdbID  } }}>
+        <Link href={{ pathname: 'detail', params: { movieId: item.imdbID } }}>
             <Pressable>
                 <View style={styles.movieItem}>
                     <Image
-                        source={item?.Poster && item.Poster != 'N/A' ? { uri: item?.Poster } : require('../../../assets/images/randomMoviePoster.png')}
+                        source={item?.Poster && item.Poster != 'N/A' ? { uri: item?.Poster } : require('../../../assets/images/noPosterImage.png')}
                         style={styles.posterImage}
                     />
                     <Text style={[styles.posterText, item?.Title?.length > 17 ? { maxWidth: width * 0.37 } : {}]}>

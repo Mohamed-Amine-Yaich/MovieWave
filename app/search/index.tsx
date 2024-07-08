@@ -2,11 +2,12 @@
 import * as React from 'react';
 import { Text, View, StyleSheet } from 'react-native';
 
-import HomeContent from '@/components/HomeScreen/HomeContent';
-import HomeImageBg from '@/components/HomeScreen/HomeImageBg';
-import SearchBar from '@/components/HomeScreen/HomeSearchBar';
+
 import useMovieSearch from '@/hooks/useMovieSearch';
 import { Stack } from 'expo-router';
+import SearchImageBg from '@/components/SearchScreen/SearchImageBg';
+import SearchBar from '@/components/SearchScreen/SearchSearchBar';
+import SearchContent from '@/components/SearchScreen/SearchContent';
 
 interface SearchScreenProps { }
 
@@ -16,11 +17,11 @@ const SearchScreen = (props: SearchScreenProps) => {
     <View style={styles.container}>
       <Stack.Screen options={{  headerShown: false}} />
 
-      <HomeImageBg />
+      <SearchImageBg />
 
       <SearchBar handleTextDebounce={handleTextDebounce} />
 
-      <HomeContent loading={loading} results={results} searchText={searchText} currentPage={currentPage} apiError={apiError} error={error} loadMoreMovies={loadMoreMovies} />
+      <SearchContent loading={loading} results={results} searchText={searchText} currentPage={currentPage} apiError={apiError} error={error} loadMoreMovies={loadMoreMovies} />
 
     </View>
   );
