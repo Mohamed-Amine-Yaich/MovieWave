@@ -22,6 +22,7 @@ const HomeContent = ({ searchText, currentPage, loading, results, apiError, erro
             <Loading />
         ) : results.length > 0 ? (
             <FlatList
+               showsVerticalScrollIndicator={false}
                 data={results}
                 renderItem={({ item }: { item: IMovie }) => <MovieCard item={item} />}
                 keyExtractor={item => item.imdbID}
