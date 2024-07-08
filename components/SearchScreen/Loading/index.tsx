@@ -3,7 +3,7 @@ import React from "react";
 
 export default function Loading() {
   return (
-    <View>
+    <View >
       <ActivityIndicator size="large" color="white" />
     </View>
   );
