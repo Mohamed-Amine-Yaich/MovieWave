@@ -1,42 +1,43 @@
 import { height } from '@/constants/constants';
 import { MovieDetails } from '@/interfaces/interfaces';
 import * as React from 'react';
-import { Text, View, StyleSheet, Image } from 'react-native';
+import { Text, View, StyleSheet, Image, ImageBackground } from 'react-native';
 
 
 interface MovieDetailContentProps {
-    movie : MovieDetails
+    movie?: MovieDetails
 }
 
-const MovieDetailContent = ({movie}: MovieDetailContentProps) => {
-  return (
-    movie && (
-        <View style={styles.movieDetailsContainer}>
-            <Image
-                source={require('../../../assets/images/movieDetailsBg.png')}
-                style={styles.backgroundImage}
-                resizeMode="cover"
-            />
-            <View style={styles.detailsContent}>
-                <Text style={styles.title}>{movie.Title}</Text>
-                <View style={styles.genreContainer}>
-                    {movie.Genre.split(',').map((genre, index) => (
-                        <Text key={index} style={styles.genreText}>
-                            {genre.trim()}
-                            {index + 1 !== movie.Genre.split(',').length && ' • '}
+const MovieDetailContent = ({ movie }: MovieDetailContentProps) => {
+
+    return (
+
+        movie && (
+            <View style={styles.movieDetailsContainer}>
+
+                <View style={styles.detailsContent}>
+                    <Text style={styles.title}>{movie.Title}</Text>
+                    <View style={styles.genreContainer}>
+                        {movie.Genre.split(',').map((genre, index) => (
+                            <Text key={index} style={styles.genreText}>
+                                {genre.trim()}
+                                {index + 1 !== movie.Genre.split(',').length && ' • '}
+                            </Text>
+                        ))}
+                    </View>
+                    <View style={styles.releaseContainer}>
+                        <Text style={styles.releaseText}>
+                            {movie.Runtime} - {movie.Released || 'N/A'}
                         </Text>
-                    ))}
+                    </View>
+                    <Text style={styles.plotText}>{movie.Plot}</Text>
                 </View>
-                <View style={styles.releaseContainer}>
-                    <Text style={styles.releaseText}>
-                        {movie.Runtime} - {movie.Released || 'N/A'}
-                    </Text>
-                </View>
-                <Text style={styles.plotText}>{movie.Plot}</Text>
-            </View>
-        </View>
+
+            </View >
+
+
+        )
     )
-  );
 };
 
 export default MovieDetailContent;
@@ -45,23 +46,13 @@ export default MovieDetailContent;
 
 
 const styles = StyleSheet.create({
-   
- 
+
+
     movieDetailsContainer: {
         flex: 1,
-        backgroundColor: 'white',
         paddingTop: 4,
-        marginTop: -98,
-        overflow: 'hidden',
-        borderTopLeftRadius: 30,
-        borderTopRightRadius: 30,
-    },
-    backgroundImage: {
         width: '100%',
-        height: height,
-        position: 'absolute',
-        top: 0,
-        left: 0,
+        borderStartColor: '#E0B0FF'
     },
     detailsContent: {
         padding: 16,

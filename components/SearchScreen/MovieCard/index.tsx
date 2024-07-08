@@ -9,19 +9,19 @@ interface IMovieCard {
 }
 
 const MovieCard = ({ item }: IMovieCard) => {
-  
+
 
     return (
         <Link href={{ pathname: 'detail', params: { movieId: item.imdbID } }}>
-                <View style={styles.movieItem}>
-                    <Image
-                        source={item?.Poster && item.Poster != 'N/A' ? { uri: item?.Poster } : require('../../../assets/images/noPosterImage.png')}
-                        style={styles.posterImage}
-                    />
-                    <Text style={[styles.posterText, item?.Title?.length > 17 ? { maxWidth: width * 0.37 } : {}]}>
-                        {item.Title}
-                    </Text>
-                </View>
+            <View style={styles.movieItem}>
+                <Image
+                    source={item?.Poster && item.Poster != 'N/A' ? { uri: item?.Poster } : require('../../../assets/images/noPosterImage.png')}
+                    style={styles.posterImage}
+                />
+                <Text style={[styles.posterText, item?.Title?.length > 17 ? { maxWidth: width * 0.37 } : {}]}>
+                    {item.Title}
+                </Text>
+            </View>
         </Link>
     );
 };
