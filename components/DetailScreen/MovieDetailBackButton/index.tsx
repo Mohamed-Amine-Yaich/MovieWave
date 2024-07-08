@@ -8,7 +8,7 @@ import { Link } from 'expo-router';
 const MovieDetailBackButton = () => {
     return (<View style={styles.backButtonContainer}>
         <Link href={'/'}>
-            <Ionicons name="chevron-back" size={24} color="black" />
+            <Ionicons name="chevron-back" size={24} color="white" />
         </Link>
     </View>
     );

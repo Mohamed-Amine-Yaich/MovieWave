@@ -6,6 +6,7 @@ import MovieDetailPoster from "@/components/DetailScreen/MovieDetailsPoster";
 import Loading from "@/components/SearchScreen/Loading";
 import useMovieDetails from "@/hooks/useMovieDetails";
 import { StyleSheet, ImageBackground } from "react-native";
+import MovieDetailFavoriteButton from "@/components/DetailScreen/MovieDetailFavoriteButton";
 
 interface DetailScreenProps {}
 
@@ -24,7 +25,7 @@ const DetailScreen = (props: DetailScreenProps) => {
         <>
           <MovieDetailBackButton />
           <MovieDetailPoster loading={loading} movie={movie} />
-
+         < MovieDetailFavoriteButton/>
            <MovieDetailContent movie={movie} />
 
           {(error || apiError) && (
