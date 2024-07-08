@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Text, View, StyleSheet, Image, Pressable } from 'react-native';
+import { Text, View, StyleSheet, Image, Pressable, Button, TouchableOpacity } from 'react-native';
 import { IMovie } from '@/interfaces/interfaces';
 import { height, width } from '@/constants/constants';
 import { Link } from 'expo-router';
@@ -9,9 +9,10 @@ interface IMovieCard {
 }
 
 const MovieCard = ({ item }: IMovieCard) => {
+  
+
     return (
         <Link href={{ pathname: 'detail', params: { movieId: item.imdbID } }}>
-            <Pressable>
                 <View style={styles.movieItem}>
                     <Image
                         source={item?.Poster && item.Poster != 'N/A' ? { uri: item?.Poster } : require('../../../assets/images/noPosterImage.png')}
@@ -21,7 +22,6 @@ const MovieCard = ({ item }: IMovieCard) => {
                         {item.Title}
                     </Text>
                 </View>
-            </Pressable>
         </Link>
     );
 };
