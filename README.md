@@ -3,28 +3,50 @@
 This project is a React Native Expo app that allows users to search for movies and view movie details. It uses a Context API for managing the global state, including authentication, movie details, and movie search. The app is structured using a clear and simple file-based navigation with Expo Router.
 
 1. Clone the repository
+   ```bash
+   
+   https://github.com/Mohamed-Amine-Yaich/MovieWave.git
+   
+   ```
+   and
+   
+   ```bash
+   
+   cd MovieWave
+   
+   ```
+   
 
-https://github.com/Mohamed-Amine-Yaich/MovieWave.git
-and
-cd MovieWave
-
-2. Install dependencies
+3. Install dependencies
 
    ```bash
+   
    yarn install
-   or 
+   
+    ```
+   or
+   
+   ```bash
+   
    npm install
+   
    ```
 
-3. Start the app
+5. Start the app
 
    ```bash
+   
    npx expo start
-   or 
+   
+    ```
+   or
+   
+   ```bash
+   
    yarn start
+   
    ```
-
-
+   
 ## Features
 
 1. Authentication Context
