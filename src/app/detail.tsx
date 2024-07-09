@@ -4,15 +4,16 @@ import MovieDetailBackButton from "@/src/components/DetailScreen/MovieDetailBack
 import MovieDetailContent from "@/src/components/DetailScreen/MovieDetailContent";
 import MovieDetailPoster from "@/src/components/DetailScreen/MovieDetailsPoster";
 import Loading from "@/src/components/SearchScreen/Loading";
-import useMovieDetails from "@/src/hooks/useMovieDetails";
 import { StyleSheet, ImageBackground } from "react-native";
 import MovieDetailFavoriteButton from "@/src/components/DetailScreen/MovieDetailFavoriteButton";
+import { useMovieDetailsContext } from "../context/MovieDetailsContext";
+import { useLocalSearchParams } from "expo-router";
 
-interface DetailScreenProps { }
 
-const DetailScreen = (props: DetailScreenProps) => {
-  const { movie, apiError, error, hideErrorToast, loading } = useMovieDetails();
-  console.log('movie :', movie)
+
+const DetailScreen = () => {
+  const { loading, } = useMovieDetailsContext();
+
   return (
     <ImageBackground
       source={require("../assets/images/movieDetailsBg.png")}
@@ -24,22 +25,10 @@ const DetailScreen = (props: DetailScreenProps) => {
       ) : (
         <>
           <MovieDetailBackButton />
-          <MovieDetailPoster loading={loading} movie={movie} />
-          < MovieDetailFavoriteButton />
-          <MovieDetailContent movie={movie} />
-
-          {(error || apiError) && (
-            <ErrorToast
-              isVisible={!!(error || apiError)}
-              message={
-                error
-                  ? "An error has occurred. Please try later."
-                  : apiError &&
-                  "Movie could not be loaded. Please try again later."
-              }
-              onClose={hideErrorToast}
-            />
-          )}
+          <MovieDetailPoster />
+          <MovieDetailFavoriteButton />
+          <MovieDetailContent />
+          <ErrorToast />
         </>
       )}
     </ImageBackground>

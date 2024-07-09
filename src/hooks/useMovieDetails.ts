@@ -1,17 +1,16 @@
 
 import { useEffect, useCallback, useState } from 'react';
 import { IAPIErrorResponse, MovieDetails } from '../interfaces/interfaces';
-import { router, useLocalSearchParams } from 'expo-router';
+import { router, } from 'expo-router';
 import { fetchMovies } from '../services/moviesService';
 
 
 const useMovieDetails = () => {
-
-    const params = useLocalSearchParams();
     const [movie, setMovie] = useState<MovieDetails>();
     const [loading, setLoading] = useState(false);
     const [apiError, setApiError] = useState<string>('');
     const [error, setError] = useState<string>('');
+    const [movieId, setMovieId] = useState<string>();
 
     const fetchMovieById = useCallback(async (movieId: string) => {
         setLoading(true);
@@ -35,8 +34,9 @@ const useMovieDetails = () => {
     }, []);
 
     useEffect(() => {
-        fetchMovieById(params?.movieId);
-    }, [params?.movieId, fetchMovieById]);
+        console.log('movieid', movieId)
+        if (movieId) fetchMovieById(movieId);
+    }, [movieId, fetchMovieById]);
 
     const handleNavigation = () => {
         router.navigate('/')
@@ -54,6 +54,7 @@ const useMovieDetails = () => {
         apiError,
         hideErrorToast,
         handleNavigation,
+        setMovieId
 
     };
 };

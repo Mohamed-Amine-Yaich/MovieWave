@@ -1,20 +1,15 @@
 import * as React from 'react';
 import { Text, View, StyleSheet, Image } from 'react-native';
-
-import Loading from '@/src/components/SearchScreen/Loading';
-import { MovieDetails } from '@/src/interfaces/interfaces';
 import { height, width } from '@/src/constants/constants';
+import { useMovieDetailsContext } from '@/src/context/MovieDetailsContext';
 
-interface MovieDetailPosterProps {
-    loading: boolean
-    movie?: MovieDetails
-}
 
-const MovieDetailPoster = ({ loading, movie }: MovieDetailPosterProps) => {
+
+const MovieDetailPoster = () => {
+    const { movie } = useMovieDetailsContext();
+
     return (
-        loading ? (
-            <Loading />
-        ) : (
+        
             <View style={styles.movieImageContainer}>
                 <Image
                     source={{
@@ -25,7 +20,7 @@ const MovieDetailPoster = ({ loading, movie }: MovieDetailPosterProps) => {
                     }]}
                 />
             </View>
-        )
+     
 
 
     );

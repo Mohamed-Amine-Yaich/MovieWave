@@ -1,14 +1,12 @@
-import { height } from '@/src/constants/constants';
-import { MovieDetails } from '@/src/interfaces/interfaces';
+import { useMovieDetailsContext } from '@/src/context/MovieDetailsContext';
 import * as React from 'react';
 import { Text, View, StyleSheet, Image, ImageBackground } from 'react-native';
 
 
-interface MovieDetailContentProps {
-    movie?: MovieDetails
-}
 
-const MovieDetailContent = ({ movie }: MovieDetailContentProps) => {
+
+const MovieDetailContent = () => {
+    const { movie } = useMovieDetailsContext();
 
     return (
 

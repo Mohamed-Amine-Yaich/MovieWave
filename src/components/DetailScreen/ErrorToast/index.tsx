@@ -1,28 +1,29 @@
+import { useMovieDetailsContext } from '@/src/context/MovieDetailsContext';
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import Modal from 'react-native-modal';
-interface IErrorTostProps {
-    isVisible: boolean;
-    message: string;
-    onClose: () => void
-
-}
 
 
-const ErrorToast = ({ isVisible, message, onClose }: IErrorTostProps) => {
+
+const ErrorToast = () => {
+    const { apiError, error, hideErrorToast } = useMovieDetailsContext();
+
     return (
         <Modal
-            isVisible={isVisible}
+            isVisible={!!(error || apiError)}
             animationIn="slideInUp"
             animationOut="slideOutDown"
             backdropOpacity={0.3}
-            onBackdropPress={onClose}
+            onBackdropPress={hideErrorToast}
             style={styles.modal}
-           
+
         >
             <View style={styles.toastContainer}>
-                <Text style={styles.toastText}>{message}</Text>
-                <TouchableOpacity onPress={onClose} style={styles.closeButton}>
+                <Text style={styles.toastText}>{error
+                    ? "An error has occurred. Please try later."
+                    : apiError &&
+                    "Movie could not be loaded. Please try again later."}</Text>
+                <TouchableOpacity onPress={hideErrorToast} style={styles.closeButton}>
                     <Text style={styles.closeButtonText}>Close</Text>
                 </TouchableOpacity>
             </View>
@@ -30,10 +31,23 @@ const ErrorToast = ({ isVisible, message, onClose }: IErrorTostProps) => {
     );
 };
 
+
+/* 
+  {(error || apiError) && (
+            <ErrorToast
+              isVisible={!!(error || apiError)}
+              message={
+                error
+                  ? "An error has occurred. Please try later."
+                  : apiError &&
+                  "Movie could not be loaded. Please try again later."
+              }
+              onClose={hideErrorToast}
+            />*/
 const styles = StyleSheet.create({
     modal: {
         justifyContent: 'flex-end',
-      
+
 
     },
     toastContainer: {

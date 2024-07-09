@@ -3,6 +3,7 @@ import { Text, View, StyleSheet, Image, Pressable, Button, TouchableOpacity } fr
 import { IMovie } from '@/src/interfaces/interfaces';
 import { height, width } from '@/src/constants/constants';
 import { Link } from 'expo-router';
+import { useMovieDetailsContext } from '@/src/context/MovieDetailsContext';
 
 interface IMovieCard {
     item: IMovie
@@ -10,9 +11,15 @@ interface IMovieCard {
 
 const MovieCard = ({ item }: IMovieCard) => {
 
+    const { setMovieId } = useMovieDetailsContext()
+    function handlePress() {
+        setMovieId(item.imdbID)
+    }
 
     return (
-        <Link href={{ pathname: 'detail', params: { movieId: item.imdbID } }}>
+        <Link href={{ pathname: 'detail', params: { movieId: item.imdbID } }} onPress={handlePress}>
+
+
             <View style={styles.movieItem}>
                 <Image
                     source={item?.Poster && item.Poster != 'N/A' ? { uri: item?.Poster } : require('../../../assets/images/noPosterImage.png')}
