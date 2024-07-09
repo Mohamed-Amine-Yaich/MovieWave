@@ -1,50 +1,57 @@
-# Welcome to your Expo app 👋
+# Welcome to your Movie Wave app 👋
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+This project is a React Native Expo app that allows users to search for movies and view movie details. It uses a Context API for managing the global state, including authentication, movie details, and movie search. The app is structured using a clear and simple file-based navigation with Expo Router.
 
-## Get started
+1. Clone the repository
 
-1. Install dependencies
+https://github.com/Mohamed-Amine-Yaich/MovieWave.git
+and
+cd MovieWave
+
+2. Install dependencies
 
    ```bash
+   yarn install
+   or 
    npm install
    ```
 
-2. Start the app
+3. Start the app
 
    ```bash
-    npx expo start
+   npx expo start
+   or 
+   yarn start
    ```
 
-In the output, you'll find options to open the app in a
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+## Features
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+1. Authentication Context
+   Manages user authentication state.
 
-## Get a fresh project
+2. Movie Search Context
+   Manages movie search results and pagination state.
 
-When you're ready, run:
+3. Movie Details Context
+   Manages state for displaying movie details.
 
-```bash
-npm run reset-project
-```
+3. Reusable Components
+ .MovieCard: Displays movie information.
+ .SearchBar: Input for searching movies.
+ .ErrorToast: Displays error messages.
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+5. Custom Hooks
+ .useAuth: Manages authentication logic.
+ .useMovieDetails: Fetches and manages movie details state.
+ .useMovieSearch: Handles movie search logic including pagination and debouncing input.
 
-## Learn more
+7. API Handling
+   Handles API calls and manages generic errors.
 
-To learn more about developing your project with Expo, look at the following resources:
+8. Pagination
+Implements pagination in the movie search context to fetch more movies as the user scrolls.
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+9. favorite movie 
+implements favorite system related to nest js backend API 
 
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
