@@ -1,6 +1,6 @@
 import axios from 'axios';
 const axiosInstance = axios.create({
-  baseURL: 'http://172.20.10.6:3000',// Replace with your API base URL from .env
+  baseURL: process.env.EXPO_PUBLIC_MW_API_BASE_URL,// Replace with your API base URL from .env
   timeout: 5000
 });
 
