@@ -17,7 +17,7 @@ This project is a React Native Expo app that allows users to search for movies a
    ```
    
 
-3. Install dependencies
+2. Install dependencies
 
    ```bash
    
@@ -31,8 +31,9 @@ This project is a React Native Expo app that allows users to search for movies a
    npm install
    
    ```
-
-5. Start the app
+3. Create a .env file based on .env.example file
+ 
+4. Start the app
 
    ```bash
    
@@ -58,7 +59,7 @@ This project is a React Native Expo app that allows users to search for movies a
 3. Movie Details Context
    Manages state for displaying movie details.
 
-3. Reusable Components
+4. Reusable Components
  .MovieCard: Displays movie information.
  .SearchBar: Input for searching movies.
  .ErrorToast: Displays error messages.
@@ -68,12 +69,12 @@ This project is a React Native Expo app that allows users to search for movies a
  .useMovieDetails: Fetches and manages movie details state.
  .useMovieSearch: Handles movie search logic including pagination and debouncing input.
 
-7. API Handling
+6. API Handling
    Handles API calls and manages generic errors.
 
-8. Pagination
+7. Pagination
 Implements pagination in the movie search context to fetch more movies as the user scrolls.
 
-9. favorite movie 
+8. favorite movie 
 implements favorite system related to nest js backend API 
 
