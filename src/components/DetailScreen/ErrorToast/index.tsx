@@ -20,7 +20,7 @@ const ErrorToast = () => {
         >
             <View style={styles.toastContainer}>
                 <Text style={styles.toastText}>{error
-                    ? "An error has occurred. Please try later."
+                    ? "An error has occurred. Please try later!"
                     : apiError &&
                     "Movie could not be loaded. Please try again later."}</Text>
                 <TouchableOpacity onPress={hideErrorToast} style={styles.closeButton}>

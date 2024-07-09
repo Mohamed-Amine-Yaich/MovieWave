@@ -26,7 +26,7 @@ const MovieSearchContext = createContext<{
 
 });
 
-export const MovieSearchProvider = ({ children }) => {
+export const MovieSearchProvider = ({ children }: { children: React.ReactNode }) => {
     const { loading, results, searchText, handleTextDebounce, currentPage, apiError, error, loadMoreMovies, } = useMovieSearch()
 
     return (
