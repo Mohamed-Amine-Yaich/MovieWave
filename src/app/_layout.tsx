@@ -8,6 +8,7 @@ import 'react-native-reanimated';
 import { useColorScheme } from '@/src/hooks/useColorScheme';
 import { MovieSearchProvider } from '../context/MovieSearchContext';
 import { MovieDetailsProvider } from '../context/MovieDetailsContext';
+import { AuthProvider } from '../context/AuthContext';
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
@@ -31,17 +32,19 @@ export default function RootLayout() {
 
   return (
     <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <MovieSearchProvider>
-      <MovieDetailsProvider>
-      <Stack
-        screenOptions={{ headerShown: false }}
-      >
-        <Stack.Screen name="index" />
-        <Stack.Screen name="detail" />
-        <Stack.Screen name="+not-found" />
-      </Stack>
-      </MovieDetailsProvider>
-      </MovieSearchProvider>
+      <AuthProvider>
+        <MovieSearchProvider>
+          <MovieDetailsProvider>
+            <Stack
+              screenOptions={{ headerShown: false }}
+            >
+              <Stack.Screen name="index" />
+              <Stack.Screen name="detail" />
+              <Stack.Screen name="+not-found" />
+            </Stack>
+          </MovieDetailsProvider>
+        </MovieSearchProvider>
+      </AuthProvider>
     </ThemeProvider>
   );
 }

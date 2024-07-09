@@ -14,9 +14,9 @@ export interface IFetchMovieBySearchResponse {
   Response: string,
   Search: IMovie[],
   totalResults: string
- 
+
 }
-export interface IFetchMovieByIDResponse extends MovieDetails {}
+export interface IFetchMovieByIDResponse extends MovieDetails { }
 
 export interface IMovie { Poster: string, Title: string, Type: string, Year: string, imdbID: string }
 
@@ -44,9 +44,10 @@ export interface MovieDetails {
   imdbRating: string;
   imdbVotes: string;
   totalSeasons: string;
+  _id?: string
 }
 export interface IAPIErrorResponse {
-  Response : string,
-  Error : string
-  
+  Response: string,
+  Error: string
+
 }

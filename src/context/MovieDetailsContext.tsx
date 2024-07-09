@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import React, { createContext, useContext, useState, useEffect, SetStateAction } from 'react';
 import useMovieDetails from '../hooks/useMovieDetails';
 import { MovieDetails } from '../interfaces/interfaces';
 
@@ -10,9 +10,9 @@ const MovieDetailsContext = createContext<
         error: string;
         apiError: string;
         hideErrorToast: () => void;
-        handleNavigation: () => void;
-        setMovieId: (str: string ) => void,
-
+        setMovieId: (str: string) => void,
+        setIsFavorite: (bool: boolean) => void,
+        isFavorite: boolean | undefined
     }
 >({
     loading: false,
@@ -20,16 +20,17 @@ const MovieDetailsContext = createContext<
     error: '',
     apiError: '',
     hideErrorToast: () => { },
-    handleNavigation: () => { },
-    setMovieId: (str: string ) => { },
+    setMovieId: (str: string) => { },
+    setIsFavorite: (bool: boolean) => { },
+    isFavorite: undefined
 }
 );
 
-export const MovieDetailsProvider = ({ children }) => {
-    const { movie, apiError, error, hideErrorToast, loading, setMovieId } = useMovieDetails();
+export const MovieDetailsProvider = ({ children }: { children: React.ReactNode }) => {
+    const { movie, apiError, error, hideErrorToast, loading, setMovieId, isFavorite, setIsFavorite, } = useMovieDetails();
 
     return (
-        <MovieDetailsContext.Provider value={{ movie, apiError, error, hideErrorToast, loading, setMovieId }}>
+        <MovieDetailsContext.Provider value={{ movie, apiError, error, hideErrorToast, loading, setMovieId, isFavorite, setIsFavorite, }}>
             {children}
         </MovieDetailsContext.Provider>
     );

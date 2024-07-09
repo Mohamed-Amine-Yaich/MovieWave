@@ -1,3 +1,4 @@
+import { useMovieDetailsContext } from '@/src/context/MovieDetailsContext';
 import { Ionicons } from '@expo/vector-icons';
 import * as React from 'react';
 import { Text, View, StyleSheet, TouchableOpacity } from 'react-native';
@@ -6,13 +7,16 @@ interface MovieDetailFavoriteButtonProps { }
 
 const MovieDetailFavoriteButton = (props: MovieDetailFavoriteButtonProps) => {
     //need to track where it is favorite from backend set default to false
-    const [isFavorite, setIsFavorite] = React.useState<boolean>(false)
+    const { isFavorite, setIsFavorite } = useMovieDetailsContext()
+    const handlePress = async () => {
+        setIsFavorite((currentState: boolean) => !currentState)
+    }
     return (
         <View
             style={styles.container}
         >
-            <TouchableOpacity onPress={() => { setIsFavorite((currentState: boolean) => !currentState) }}>
-                <Ionicons name="heart" size={24} color={isFavorite ? 'red' : 'white'} />         
+            <TouchableOpacity onPress={handlePress}>
+                <Ionicons name="heart" size={24} color={isFavorite ? 'red' : 'white'} />
             </TouchableOpacity>
         </View>
     );
@@ -21,7 +25,7 @@ const MovieDetailFavoriteButton = (props: MovieDetailFavoriteButtonProps) => {
 export default MovieDetailFavoriteButton;
 
 const styles = StyleSheet.create({
-    container:{
+    container: {
         backgroundColor: '#2496ff',
         padding: 10,
         borderRadius: 9999,
